@@ -38,7 +38,7 @@ function App() {
       setIsError(false);
       setIsLoading(true);
       try {
-        const data = await getImages(query, page);
+        const data = await getImages<{ total_pages: number;  results: Image[]}>(query, page);
         setImages((prevImages) => [...prevImages, ...data.results]);
         setShowBtn(data.total_pages > page);
       } catch (error) {
